@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html ng-app="app" style="background-color: #96C4ED;
+">
+  <head>
+    <script src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script src="./js/angular.js"></script>
+    
+    <script src="./js/moment.js"></script>
+    <script src="./js/angular-animate.min.js"></script>
+    <script src="./js/angular-route.min.js"></script>
+    <script src="./js/angular-aria.min.js"></script>
+    <script src="./js/angular-messages.min.js"></script>
+    <script src="./js/svg-assets-cache.js"></script>
+    <script src="./js/angular-material.js"></script>
+    <link rel="stylesheet" href="./css/icon.css">
+    <link rel="stylesheet" type="text/css" href="./css/angular-material.css">
+    <script src="demo.js"></script>
+    <style>
+    md-radio-button {
+    box-sizing: border-box;
+    display: -webkit-inline-box !important;
+    margin-bottom: 0px;
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
+    }
+   form{
+/*    height: 100%;*/
+    display: table;
+    margin: auto;
+    }
+    </style>
+  </head>
+
+ <body>
+    <div class="container" >
+      <md-content layout-padding=""  ng-cloak="" class="inputdemoIcons" style="background-color:#96C4ED;">
+      <form name="myForm"  style="    background-color: white;"ng-controller="myCtrl" >
+        <center><b><h1><label>Demo Form</label></h1></b></center>
+        <div layout-xs="row" layout-sm="row" layout-align="end center" style=" padding: 27px;
+    margin-top: -15px;" >
+          <!-- Fname and Lname -->
+
+ 
+      <div layout="row" flex-gt-sm="100" layout-gt-sm="row" style="    margin-top: -25px;">       
+             <md-input-container class="md-block" flex-gt-sm >
+            <div class="relative" >
+              <label>First Name </label>
+              <first-name ng-model="s.fname" name="fname1" required></first-name>
+              <div ng-messages="myForm.fname1.$error" ng-hide="myForm.fname1.$dirty">
+              <div ng-message="required">Required</div>
+                <div ng-message="charonly">only Char</div>
+        
+                <div ng-message="nomore">Dont use More than 20 char</div>
+              </div>
+            </div>
+            </md-input-container>          
+          </div>
+          <br>
+          <div class="row" style="margin-top:-50px" >
+            <md-input-container class="md-block" flex-gt-sm="">
+            
+            <div class="relative">
+              <label>E-mail Id</label>
+              <email-directive ng-model="s.usergmail" name="usergmail" required></email-directive>
+              <div ng-messages="myForm.usergmail.$error" ng-hide="myForm.usergmail.$dirty ">
+                <div ng-message="required">Required</div>
+                <div ng-message="invalid_start">Start with Alphabet Only</div>
+                <div ng-message="invalid">Invalid E-mail Address</div>
+              </div>
+            </div>
+            </md-input-container>
+          </div>
+          <br>
+     <div class="row" style="margin-top: -30px;">
+            <label>Gender</label>
+            <div style="margin-top: -15px;margin-left: 95px;">
+              <md-radio-group ng-model="s.gen" name="gen" required layout="row">
+              <md-radio-button value="male" class="md-primary">Male</md-radio-button>
+              <md-radio-button value="female">Female </md-radio-button>
+              
+              </md-radio-group>
+              <div ng-messages="myForm.gen.$error.required" style="color:#dd2c00;font-size:12px;margin-left: 25px"ng-hide="myForm.gen.$dirty">
+                Required
+              </div>
+            </div>
+          </div>
+          <br>
+
+   <div style="margin-top:-25px;">
+          <md-input-container class="md-block" flex-gt-sm="">
+          <div class="relative">
+            <label>Pincode</label>
+          <pin-code name="pincode" required ng-model="s.pincode"></pin-code>
+          <div ng-messages="myForm.pincode.$error" ng-hide="myForm.input1.$dirty">
+            <div ng-message="required">Required</div>
+            <div ng-message="noonly">Only Allow Number</div>
+            <div ng-message="belowlen">Should be 6 no</div>
+             <div ng-message="morelen">Dont use more than 6</div>
+          </div>
+        </div>
+        </md-input-container>
+        <div flex="5" hide-xs hide-sm>
+        </div>
+      </div>
+      <br>
+           
+<div class="row">
+  
+ <div class="relative" >
+        <md-datepicker  class="validation-messages" dat-directive name="bdate" class="md-block" flex-gt-sm="" ng-model="s.bdate"md-placeholder="Birthday date" required></md-datepicker>
+              
+              <div ng-messages="myForm.bdate.$error">
+                
+                <div ng-message="required" style="color:#dd2c00;font-size:12px;margin-left: 46px" >Required</div>
+                <div ng-message="val" style="color:#dd2c00;font-size:12px;margin-left: 46px" >Invalid Birthday Date</div>
+              </div>
+            </div>
+
+
+</div>
+          <div layout="row" flex-gt-sm="100" layout-gt-sm="row" style="margin-top: 10px;">
+            <md-input-container class="md-block" flex-gt-sm >
+            <div class="relative" >
+              <label>Fees type</label>
+              <md-select name="feetype" class="grp" ng-model="s.feetype" required >
+              <md-option value="Regular">Regular</md-option>
+              <md-option value="Self Finance">Self Finance</md-option>
+              </md-select>
+              <div ng-show="myForm.feetype.$error.required" style="margin-top: -20px;color:#dd2c00;font-size:12px;" >Required</div>
+            </div>
+            </md-input-container>
+            
+          </div>
+          <br>
+          <!-- gender -->
+     
+          <br>
+
+
+
+
+ <div layout="row" flex-gt-sm="100" layout-gt-sm="row" style="    margin-top: -25px;">       
+             <md-input-container class="md-block" flex-gt-sm>
+            <div class="relative">
+              <label>Alpha numeric</label>
+            <fees-amount name="fees" required ng-model="s.fees"></fees-amount>
+            <div ng-messages="myForm.fees.$error" ng-hide="myForm.fees.$dirty">
+              <div ng-message="required">Required</div>
+              <div ng-message="noonly">Only Allow alpha Number</div>
+           
+            </div>
+          </div>
+       
+          
+          </div>
+<br>
+
+
+      <section layout="row" layout-sm="column" layout-align="center center" style="margin-top: 20px;" layout-wrap>
+        
+        <md-button class="md-raised md-primary" ng-click="sum(s)" ng-disabled="myForm.$invalid"  >Submit</md-button>
+     
+        <md-button class="md-raised md-warn" ng-click="rec()">Reset</md-button>
+        
+      </section>
+      
+    </form>
+    
+    </md-content>
+  </div>
+</body>
+
+ </html>
